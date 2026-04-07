@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/book-tracker/static/css/main.b9acea3d.css",
+    "main.js": "/book-tracker/static/js/main.8c5b2945.js",
+    "index.html": "/book-tracker/index.html",
+    "main.b9acea3d.css.map": "/book-tracker/static/css/main.b9acea3d.css.map",
+    "main.8c5b2945.js.map": "/book-tracker/static/js/main.8c5b2945.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b9acea3d.css",
+    "static/js/main.8c5b2945.js"
+  ]
+}
