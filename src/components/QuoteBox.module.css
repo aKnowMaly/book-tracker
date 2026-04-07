@@ -1,0 +1,58 @@
+.quoteBox {
+  background: linear-gradient(135deg, rgba(240, 194, 127, 0.08), rgba(240, 194, 127, 0.03));
+  border: 1px solid rgba(240, 194, 127, 0.15);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.quoteBox.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-theme="light"] .quoteBox {
+  background: linear-gradient(135deg, rgba(139, 105, 20, 0.06), rgba(139, 105, 20, 0.02));
+  border-color: rgba(139, 105, 20, 0.15);
+}
+
+.quoteIcon {
+  font-size: 3rem;
+  color: #f0c27f;
+  opacity: 0.3;
+  position: absolute;
+  top: 0.5rem;
+  left: 1.5rem;
+  line-height: 1;
+}
+
+[data-theme="light"] .quoteIcon {
+  color: #8B6914;
+}
+
+.quoteText {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #c0c0c0;
+  line-height: 1.7;
+  margin: 0 0 0.8rem;
+  font-family: 'Georgia', serif;
+}
+
+[data-theme="light"] .quoteText {
+  color: #4a4a4a;
+}
+
+.quoteAuthor {
+  font-size: 0.85rem;
+  color: #f0c27f;
+  font-weight: 600;
+}
+
+[data-theme="light"] .quoteAuthor {
+  color: #8B6914;
+}

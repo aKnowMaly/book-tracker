@@ -1,0 +1,441 @@
+.stats {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.pageTitle {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #e0e0e0;
+  margin: 0 0 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+[data-theme="light"] .pageTitle {
+  color: #2d2d2d;
+}
+
+.subtitle {
+  color: #888;
+  margin: 0 0 2rem;
+  font-size: 0.9rem;
+}
+
+/* Section Titles */
+.sectionTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #e0e0e0;
+  margin: 0 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+[data-theme="light"] .sectionTitle {
+  color: #2d2d2d;
+}
+
+/* Overview Cards */
+.overviewGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.overviewCard {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.overviewCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .overviewCard {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .overviewCard:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.overviewIcon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.overviewContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.overviewValue {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #e0e0e0;
+  line-height: 1.1;
+}
+
+[data-theme="light"] .overviewValue {
+  color: #2d2d2d;
+}
+
+.overviewLabel {
+  font-size: 0.75rem;
+  color: #888;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Bar Chart */
+.chartSection {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+[data-theme="light"] .chartSection {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.barChart {
+  display: flex;
+  align-items: flex-end;
+  height: 200px;
+  gap: 0;
+  padding: 0 0.5rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="light"] .barChart {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+.barCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.barWrapper {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 4px;
+}
+
+.bar {
+  width: 100%;
+  max-width: 36px;
+  border-radius: 6px 6px 0 0;
+  transition: height 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 4px;
+  position: relative;
+  min-height: 0;
+}
+
+.bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 6px 6px 0 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    transparent 50%
+  );
+}
+
+.barValue {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #1a1a2e;
+  z-index: 1;
+}
+
+.barLabel {
+  font-size: 0.6rem;
+  color: #888;
+  padding-top: 0.4rem;
+  text-align: center;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.chartEmpty {
+  text-align: center;
+  color: #666;
+  font-size: 0.85rem;
+  font-style: italic;
+  margin: 1rem 0 0;
+}
+
+/* Genre Breakdown */
+.genreSection {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+[data-theme="light"] .genreSection {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.genreGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.genreItem {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.genrePill {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 20px;
+  font-weight: 700;
+  border: 1px solid;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  min-width: 80px;
+  text-align: center;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.genreBar {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+[data-theme="light"] .genreBar {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.genreFill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0.7;
+  min-width: 4px;
+}
+
+.genreCount {
+  font-size: 0.75rem;
+  color: #aaa;
+  font-weight: 600;
+  min-width: 55px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.emptyText {
+  color: #666;
+  font-size: 0.85rem;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Activity Grid */
+.activitySection {
+  margin-bottom: 2rem;
+}
+
+.activityGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 0.8rem;
+}
+
+.activityCard {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 1.2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.activityCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .activityCard {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.activityValue {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #f0c27f;
+  margin-bottom: 0.2rem;
+}
+
+[data-theme="light"] .activityValue {
+  color: #8B6914;
+}
+
+.activityLabel {
+  font-size: 0.7rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  font-weight: 500;
+}
+
+/* Top Rated */
+.topRatedSection {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+[data-theme="light"] .topRatedSection {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.topList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.topItem {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.topItem:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="light"] .topItem:hover {
+  background: #faf7f0;
+}
+
+.topRank {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #f0c27f;
+  min-width: 30px;
+}
+
+[data-theme="light"] .topRank {
+  color: #8B6914;
+}
+
+.topInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.topTitle {
+  display: block;
+  font-weight: 600;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+[data-theme="light"] .topTitle {
+  color: #2d2d2d;
+}
+
+.topAuthor {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.topStars {
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.starFilled {
+  color: #f0c27f;
+}
+
+[data-theme="light"] .starFilled {
+  color: #d4a017;
+}
+
+.starEmpty {
+  color: #444;
+}
+
+[data-theme="light"] .starEmpty {
+  color: #ddd;
+}
+
+@media (max-width: 768px) {
+  .stats {
+    padding: 1rem;
+  }
+
+  .overviewGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .barChart {
+    height: 150px;
+  }
+
+  .barLabel {
+    font-size: 0.5rem;
+  }
+
+  .activityGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

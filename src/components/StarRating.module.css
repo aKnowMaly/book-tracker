@@ -1,0 +1,37 @@
+.starRating {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+  line-height: 1;
+}
+
+.star.filled {
+  color: #f0c27f;
+  text-shadow: 0 0 6px rgba(240, 194, 127, 0.4);
+}
+
+[data-theme="light"] .star.filled {
+  color: #d4a017;
+  text-shadow: 0 0 6px rgba(212, 160, 23, 0.3);
+}
+
+.star.empty {
+  color: #444;
+}
+
+[data-theme="light"] .star.empty {
+  color: #ccc;
+}
+
+.star:not(.readonly):hover {
+  transform: scale(1.25);
+}
+
+.star.readonly {
+  cursor: default;
+}
