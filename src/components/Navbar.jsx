@@ -60,17 +60,7 @@ const Navbar = () => {
               <span>Goals</span>
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/stats"
-              className={({ isActive }) =>
-                `${styles.navLink} ${isActive ? styles.active : ''}`
-              }
-            >
-              <span className={styles.navIcon}>📊</span>
-              <span>Stats</span>
-            </NavLink>
-          </li>
+
         </ul>
 
         <button

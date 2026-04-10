@@ -18,18 +18,12 @@ const BookDetail = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
-  // Reading log state
-  const [logDate, setLogDate] = useState(new Date().toISOString().split('T')[0]);
-  const [logPages, setLogPages] = useState('');
-
   useEffect(() => {
     const saved = localStorage.getItem('books');
     if (saved) {
       const books = JSON.parse(saved);
       const found = books.find(b => b.id === id);
       if (found) {
-        // Ensure readingLog array exists
-        if (!found.readingLog) found.readingLog = [];
         setBook(found);
         setCurrentPage(found.currentPage);
       }
@@ -84,55 +78,7 @@ const BookDetail = () => {
     updateBook({ favourite: !book.favourite });
   };
 
-  // Reading log handlers
-  const handleAddLog = () => {
-    const pagesRead = parseInt(logPages);
-    if (!pagesRead || pagesRead <= 0 || !logDate) return;
 
-    const newEntry = {
-      id: Date.now().toString(),
-      date: logDate,
-      pagesRead: pagesRead
-    };
-
-    const updatedLog = [...(book.readingLog || []), newEntry]
-      .sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    updateBook({ readingLog: updatedLog });
-    setLogPages('');
-  };
-
-  const handleDeleteLog = (logId) => {
-    const updatedLog = (book.readingLog || []).filter(entry => entry.id !== logId);
-    updateBook({ readingLog: updatedLog });
-  };
-
-  // Time estimate calculation
-  const getTimeEstimate = () => {
-    const log = book.readingLog || [];
-    if (log.length === 0 || book.status === 'completed') return null;
-
-    const pagesRemaining = book.totalPages - book.currentPage;
-    if (pagesRemaining <= 0) return null;
-
-    // Use last 7 log entries to calculate average pace
-    const recentLogs = log.slice(0, 7);
-    const totalPagesLogged = recentLogs.reduce((sum, entry) => sum + entry.pagesRead, 0);
-
-    // Calculate unique days in recent logs
-    const uniqueDays = new Set(recentLogs.map(entry => entry.date)).size;
-    if (uniqueDays === 0) return null;
-
-    const avgPagesPerDay = totalPagesLogged / uniqueDays;
-    if (avgPagesPerDay <= 0) return null;
-
-    const daysRemaining = Math.ceil(pagesRemaining / avgPagesPerDay);
-
-    return {
-      daysRemaining,
-      avgPagesPerDay: Math.round(avgPagesPerDay)
-    };
-  };
 
   if (!book) {
     return (
@@ -145,7 +91,7 @@ const BookDetail = () => {
   }
 
   const coverColor = getCoverColor(book.title);
-  const timeEstimate = getTimeEstimate();
+
 
   return (
     <div className={styles.bookDetail}>
@@ -239,91 +185,7 @@ const BookDetail = () => {
             </div>
           </div>
 
-          {/* Time Estimate */}
-          {timeEstimate && (
-            <div className={styles.timeEstimate}>
-              <span className={styles.timeIcon}>⏱️</span>
-              <div className={styles.timeContent}>
-                <span className={styles.timeText}>
-                  At your pace (~{timeEstimate.avgPagesPerDay} pages/day), you'll finish in
-                </span>
-                <span className={styles.timeDays}>
-                  ~{timeEstimate.daysRemaining} day{timeEstimate.daysRemaining !== 1 ? 's' : ''}
-                </span>
-              </div>
-            </div>
-          )}
 
-          {/* Reading Log */}
-          <div className={styles.readingLogSection}>
-            <h3 className={styles.sectionLabel}>📅 Reading Log</h3>
-
-            {/* Add Log Entry */}
-            <div className={styles.logForm}>
-              <input
-                type="date"
-                value={logDate}
-                onChange={(e) => setLogDate(e.target.value)}
-                className={styles.logDateInput}
-                id="log-date"
-              />
-              <input
-                type="number"
-                value={logPages}
-                onChange={(e) => setLogPages(e.target.value)}
-                placeholder="Pages read"
-                min="1"
-                className={styles.logPagesInput}
-                id="log-pages"
-              />
-              <button
-                className={styles.logAddBtn}
-                onClick={handleAddLog}
-                id="add-log-entry"
-              >
-                + Log Session
-              </button>
-            </div>
-
-            {/* Log Table */}
-            {(book.readingLog || []).length > 0 ? (
-              <div className={styles.logTableWrapper}>
-                <table className={styles.logTable}>
-                  <thead>
-                    <tr>
-                      <th>Date</th>
-                      <th>Pages Read</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {(book.readingLog || []).map(entry => (
-                      <tr key={entry.id}>
-                        <td>{new Date(entry.date + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
-                        <td>
-                          <span className={styles.logPagesValue}>{entry.pagesRead}</span> pages
-                        </td>
-                        <td>
-                          <button
-                            className={styles.logDeleteBtn}
-                            onClick={() => handleDeleteLog(entry.id)}
-                            aria-label="Delete log entry"
-                          >
-                            ✕
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                <div className={styles.logSummary}>
-                  Total logged: <strong>{(book.readingLog || []).reduce((s, e) => s + e.pagesRead, 0)}</strong> pages across <strong>{(book.readingLog || []).length}</strong> sessions
-                </div>
-              </div>
-            ) : (
-              <p className={styles.logEmpty}>No reading sessions logged yet. Start tracking your daily reading!</p>
-            )}
-          </div>
 
           {/* Notes */}
           {book.notes && (

@@ -11,14 +11,7 @@ const sampleBooks = [
     notes: 'A masterful exploration of the American Dream. The prose is hauntingly beautiful.',
     favourite: true,
     dateAdded: '2026-01-15T10:00:00.000Z',
-    dateCompleted: null,
-    readingLog: [
-      { id: 's1', date: '2026-04-01', pagesRead: 25 },
-      { id: 's2', date: '2026-04-02', pagesRead: 30 },
-      { id: 's3', date: '2026-04-04', pagesRead: 20 },
-      { id: 's4', date: '2026-04-05', pagesRead: 15 },
-      { id: 's5', date: '2026-04-06', pagesRead: 30 }
-    ]
+    dateCompleted: null
   },
   {
     id: '2',
@@ -74,14 +67,7 @@ const sampleBooks = [
     notes: 'Bilbo\'s adventure is delightful. The riddles with Gollum are iconic.',
     favourite: false,
     dateAdded: '2026-03-01T10:00:00.000Z',
-    dateCompleted: null,
-    readingLog: [
-      { id: 's6', date: '2026-03-28', pagesRead: 35 },
-      { id: 's7', date: '2026-03-30', pagesRead: 40 },
-      { id: 's8', date: '2026-04-01', pagesRead: 30 },
-      { id: 's9', date: '2026-04-03', pagesRead: 45 },
-      { id: 's10', date: '2026-04-05', pagesRead: 35 }
-    ]
+    dateCompleted: null
   },
   {
     id: '6',
